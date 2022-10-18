@@ -10,14 +10,14 @@ export const GifExpertApp = () => {
     "One Piece",
     "Dragon Ball",
   ]);
-  const onAddCategory = () => {
+  const onAddCategory = (newCategory) => {
     /*...categories es un operador de propagación que permite agregar un nuevo elemento al arreglo
     copiando el contenido del arreglo original y despues el nuevo elemento.
     si se hace al revez entonces el nuevo valor se pondria al comienzo del arreglo
     setCategories(["valor", ...categories]) */
 
     //Opcion 1
-    setCategories([...categories, "DOOM"]);
+    setCategories([...categories, newCategory]);
 
     //Opcion 2
     //setCategories((cats) => [...cats, "DOOM"]);
@@ -29,7 +29,10 @@ export const GifExpertApp = () => {
       <h1>GifExpertApp</h1>
 
       {/* input */}
-      <AddCategory setCategories={setCategories}/>
+      <AddCategory 
+        //setCategories={setCategories}
+        onNewCategory={(value) => onAddCategory(value)}
+        />
 
       {/* lista de gifs */}
       

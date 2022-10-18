@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export const AddCategory = ({ setCategories }) => {
+export const AddCategory = ({ onNewCategory }) => {
   //Hook de useState para manejar el estado del input
-  const [inputValue, setInputValue] = useState("Elden Ring");
+  const [inputValue, setInputValue] = useState("");
 
   //Función para manejar el evento onChange del input
   const handleInputChange = (e) => {
@@ -11,9 +11,11 @@ export const AddCategory = ({ setCategories }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+    
     if (inputValue.trim().length > 2) {
-      setCategories((cats) => [...cats, inputValue]);
+      //setCategories((cats) => [...cats, inputValue]);
+      onNewCategory(inputValue.trim());
+      setInputValue("");
     }
   };
 
